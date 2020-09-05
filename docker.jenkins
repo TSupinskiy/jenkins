@@ -6,33 +6,15 @@ pipeline {
     agent { 
         label 'master'
         }
-    }
-    stages {
-        stage("docker login") {
-            steps {
-                echo " ============== docker login =================="
-                withCredentials([usernamePassword(credentialsId: 'dockerhub_semaev', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh """
-                    docker login -u $USERNAME -p $PASSWORD
-                    """
-                }
-            }
-        }
+   }
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('docker/toolbox') {
-                	sh 'docker build -t semaev/toolbox:latest . '
+                dir ('') {
+                	sh 'docker build -t nginx-my -f Dockerfile.arg .'
                 }
             }
         }
-        stage("docker push") {
-            steps {
-                echo " ============== start pushing image =================="
-                sh '''
-                docker push semaev/toolbox:latest
-                '''
-            }
-        }
+   
     }
 }
