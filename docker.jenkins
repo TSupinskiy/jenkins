@@ -1,12 +1,10 @@
 #!groovy
 
-properties([disableConcurrentBuilds()])
-
 pipeline {
     agent { 
         label 'master'
         }
-   }
+   
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
@@ -14,5 +12,5 @@ pipeline {
                 	sh 'docker build -t nginx-my -f Dockerfile.arg .'
                 }
             }
-   
+   }
 }
