@@ -1,17 +1,14 @@
 #!groovy
 
 pipeline {
-stages {        
+stages {
 stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
                 dir ('') {
-                	sh 'docker build -t nginx-my -f Dockerfile.arg .'
+                	sh 'docker build -t nginx-my-jenkins -f Dockerfile.arg .'
                 }
             }
    }
  }
 }
-
-
-
