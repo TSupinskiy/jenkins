@@ -1,5 +1,4 @@
 #!/bin/bash
-mkdir 1
 
 if [ $? == 0 ]
 then
